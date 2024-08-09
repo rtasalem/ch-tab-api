@@ -1,0 +1,13 @@
+services:
+  ch-tab-api:
+    build: .
+    image: ch-tab-api
+    container_name: ch-tab-api
+    depends_on:
+      - ch-tab-api-cosmos-db
+    environment:
+      COSMOS_ENDPOINT: ${COSMOS_ENDPOINT:-https://ffc-sfd-data-cosmos-db:8081}
+      COSMOS_KEY: ${COSMOS_KEY:-C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==}
+  
+  ch-tab-api-cosmos-db:
+    image: mcr.microsoft.com/cosmosdb/linux/azure-cosmos-emulator
