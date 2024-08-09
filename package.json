@@ -1,0 +1,24 @@
+{
+  "name": "ch-tab-api",
+  "version": "1.0.0",
+  "description": "GraphQL API for querying and mutating data stored in Azure Cosmos DB (for Mongo DB) for the Take A Bao website.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rtasalem/ch-tab-api.git"
+  },
+  "keywords": [
+    "graphql",
+    "cosmosdb",
+    "mongodb"
+  ],
+  "author": "Rana Salem (https://github.com/rtasalem)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rtasalem/ch-tab-api/issues"
+  },
+  "homepage": "https://github.com/rtasalem/ch-tab-api#readme"
+}
