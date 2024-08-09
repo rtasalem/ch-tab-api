@@ -2,15 +2,20 @@ const Joi = require('joi')
 const { DEVELOPMENT, TEST, PRODUCTION } = require('../constants/environments')
 
 const schema = Joi.object({
-  endpoint: Joi.string(),
-  key: Joi.string(),
-  ordersDatabase: Joi.string().default('ch-tab-orders-receiver'),
-  ordersContainer: Joi.string().default('ch-tab-orders')
+  uri: Joi.string().uri().required(),
+  database: Joi.string().default('ch-tab-orders-receiver'),
+  options: Joi.object({
+    useNewUrlParser: Joi.boolean().default(true),
+    useUnifiedTopology: Joi.boolean().default(true)
+  }).default({
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+  })
 })
 
 const config = {
-  endpoint: process.env.COSMOS_ENDPOINT,
-  key: process.env.COSMOS_KEY
+  uri: process.env.MONGO_URI,
+  database: process.env.MONGO_ORDERS_DB
 }
 
 const { error, value } = schema.validate(config, { abortEarly: false })
@@ -20,7 +25,7 @@ value.isTest = process.env.NODE_ENV === TEST
 value.isProd = process.env.NODE_ENV === PRODUCTION
 
 if (error) {
-  throw new Error(`The Cosmos DB config is invalid. ${error.message}`)
+  throw new Error('The MongoDB config is invalid:', error.message)
 }
 
 module.exports = value

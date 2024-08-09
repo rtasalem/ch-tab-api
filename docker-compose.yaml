@@ -5,9 +5,15 @@ services:
     container_name: ch-tab-api
     depends_on:
       - ch-tab-api-cosmos-db
+      - ch-tab-api-monogo-db
     environment:
-      COSMOS_ENDPOINT: ${COSMOS_ENDPOINT:-https://ffc-sfd-data-cosmos-db:8081}
-      COSMOS_KEY: ${COSMOS_KEY:-C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==}
+      COSMOS_ENDPOINT: ${COSMOS_ENDPOINT}
+      COSMOS_KEY: ${COSMOS_KEY}
   
   ch-tab-api-cosmos-db:
     image: mcr.microsoft.com/cosmosdb/linux/azure-cosmos-emulator
+
+  ch-tab-api-monogo-db:
+    image: mongo:latest
+    ports:
+      - "27017:27017"
