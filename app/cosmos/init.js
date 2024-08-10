@@ -18,8 +18,12 @@ const initCosmos = async () => {
         throw new Error(res.reason.message)
       }
     })
-  } catch (err) {
-    throw new Error(`Failed to create databases: ${err.message}`)
+  } catch (error) {
+    throw new Error('Failed to create databases:', {
+      name: error.name,
+      message: error.message,
+      stack: error.stack
+    })
   }
 }
 

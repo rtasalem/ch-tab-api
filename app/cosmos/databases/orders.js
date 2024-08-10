@@ -11,8 +11,12 @@ const ordersDatabase = async () => {
     })
 
     return database
-  } catch (err) {
-    throw new Error(`Failed to create Orders database: ${err.message}`)
+  } catch (error) {
+    throw new Error('Failed to create orders database:', {
+      name: error.name,
+      message: error.message,
+      stack: error.stack
+    })
   }
 }
 

@@ -5,8 +5,12 @@ const cosmos = async () => {
     const cosmos = {}
     cosmos.ordersDatabase = await ordersDatabase()
     return cosmos
-  } catch (err) {
-    throw new Error(`Failed to create Cosmos DB Client: ${err.message}`)
+  } catch (error) {
+    throw new Error('Failed to create Cosmos DB Client:', {
+      name: error.name,
+      message: error.message,
+      stack: error.stack
+    })
   }
 }
 

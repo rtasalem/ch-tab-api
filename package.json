@@ -4,7 +4,7 @@
   "description": "GraphQL API for querying and mutating data stored in Azure Cosmos DB (for Mongo DB) for the Take A Bao website.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start:watch": "nodemon --inspect=0.0.0.0 --ext js --legacy-watch app/index.js"
   },
   "repository": {
     "type": "git",

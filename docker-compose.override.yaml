@@ -1,0 +1,39 @@
+services:
+  ch-tab-api:
+    build:
+      target: development
+    image: ch-tab-api-development
+    container_name: ch-tab-api-development
+    command: >
+      sh -c -x "
+        ./scripts/cosmos-wait 
+        npm run start:watch"
+    ports:
+      - "3001:3001"
+      - "9001:9229"
+    volumes:
+      - ./app:/home/node/app
+      - ./scripts:/home/node/scripts
+      - ./package.json:/home/node/package.json
+
+  ch-tab-api-cosmos-db:
+    image: mcr.microsoft.com/cosmosdb/linux/azure-cosmos-emulator
+    tty: true
+    restart: always
+    ports:
+      - "8081:8081"
+      - "10250:10250"
+      - "10251:10251"
+      - "10252:10252"
+      - "10253:10253"
+      - "10254:10254"
+      - "10255:10255"
+    environment:
+      AZURE_COSMOS_EMULATOR_PARTITION_COUNT: 5 
+      AZURE_COSMOS_EMULATOR_ENABLE_DATA_PERSISTENCE: true
+      AZURE_COSMOS_EMULATOR_IP_ADDRESS_OVERRIDE:
+    volumes:
+      - cosmos_data:/var/lib/cosmosdb/data  
+
+volumes:
+  cosmos_data:
