@@ -1,4 +1,4 @@
-const { ordersDatabase } = require('./databases')
+const { ordersDatabase } = require('./databases/orders')
 
 const cosmos = async () => {
   try {
