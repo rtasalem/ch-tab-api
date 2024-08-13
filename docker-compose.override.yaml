@@ -17,7 +17,7 @@ services:
       - ./package.json:/home/node/package.json
 
   ch-tab-api-cosmos-db:
-    image: mcr.microsoft.com/cosmosdb/linux/azure-cosmos-emulator
+    image: mcr.microsoft.com/cosmosdb/linux/azure-cosmos-emulator:mongodb
     tty: true
     restart: always
     ports:
@@ -29,9 +29,10 @@ services:
       - "10254:10254"
       - "10255:10255"
     environment:
-      AZURE_COSMOS_EMULATOR_PARTITION_COUNT: 5 
+      AZURE_COSMOS_EMULATOR_ENABLE_MONGODB_ENDPOINT: 3.2
+      AZURE_COSMOS_EMULATOR_PARTITION_COUNT: 7
       AZURE_COSMOS_EMULATOR_ENABLE_DATA_PERSISTENCE: true
-      AZURE_COSMOS_EMULATOR_IP_ADDRESS_OVERRIDE:
+      AZURE_COSMOS_EMULATOR_IP_ADDRESS_OVERRIDE: 127.0.0.1 # has to be this value otherwise partitions won't start
     volumes:
       - cosmos_data:/var/lib/cosmosdb/data  
 

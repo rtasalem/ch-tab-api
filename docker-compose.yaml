@@ -10,6 +10,8 @@ services:
     environment:
       COSMOS_ENDPOINT: ${COSMOS_ENDPOINT:-https://ch-tab-api-cosmos-db:8081}
       COSMOS_KEY: ${COSMOS_KEY:-C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==}
+      MONGO_URI: ${MONGO_URI}
+      MONGO_ORDERS_DB: ${MONGO_ORDERS_DB:-ch-tab-ordes-receiver}
   
   ch-tab-api-cosmos-db:
-    image: mcr.microsoft.com/cosmosdb/linux/azure-cosmos-emulator
+    image: mcr.microsoft.com/cosmosdb/linux/azure-cosmos-emulator:mongodb

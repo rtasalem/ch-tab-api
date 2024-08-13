@@ -1,10 +1,10 @@
 #!/bin/bash
 
-echo "Waiting for Cosmos DB"
+echo "Waiting for Azure Cosmos DB"
 
 until wget --no-check-certificate --timeout=5 --tries=1 -O /dev/null -o /dev/null https://ch-tab-api-cosmos-db:8081/_explorer/index.html; do
     sleep 5;
-    echo "Waiting for Cosmos DB..."
+    echo "Waiting for Azure Cosmos DB..."
 done;
 
-echo "The Cosmos DB Emulator is now ready"
+echo "Azure Cosmos DB Emulator is now ready"

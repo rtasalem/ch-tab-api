@@ -20,7 +20,7 @@ value.isTest = process.env.NODE_ENV === TEST
 value.isProd = process.env.NODE_ENV === PRODUCTION
 
 if (error) {
-  throw new Error(`The Cosmos DB config is invalid. ${error.message}`)
+  throw new Error(`Azure Cosmos DB config is invalid. ${error.message}`)
 }
 
 module.exports = value

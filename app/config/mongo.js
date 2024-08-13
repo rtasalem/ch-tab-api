@@ -25,7 +25,11 @@ value.isTest = process.env.NODE_ENV === TEST
 value.isProd = process.env.NODE_ENV === PRODUCTION
 
 if (error) {
-  throw new Error('The MongoDB config is invalid:', error.message)
+  throw new Error('MongoDB config is invalid:', {
+    name: error.name,
+    message: error.message,
+    stack: error.stack
+  })
 }
 
 module.exports = value
