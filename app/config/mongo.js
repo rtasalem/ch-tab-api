@@ -4,18 +4,13 @@ const { DEVELOPMENT, TEST, PRODUCTION } = require('../constants/environments')
 const schema = Joi.object({
   uri: Joi.string().uri().required(),
   database: Joi.string().default('ch-tab-orders-receiver'),
-  options: Joi.object({
-    useNewUrlParser: Joi.boolean().default(true),
-    useUnifiedTopology: Joi.boolean().default(true)
-  }).default({
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-  })
+  collection: Joi.string().default('orders-collection')
 })
 
 const config = {
   uri: process.env.MONGO_URI,
-  database: process.env.MONGO_ORDERS_DB
+  database: process.env.MONGO_ORDERS_DB,
+  collection: process.env.MONGO_ORDERS_COLLECTION
 }
 
 const { error, value } = schema.validate(config, { abortEarly: false })
