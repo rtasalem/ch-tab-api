@@ -1,5 +1,5 @@
 // const hapiApollo = require('@as-integrations/hapi').default
-const { server } = require('./server.js')
+const { app, port } = require('./server')
 // const { apolloServer } = require('./graphql/apollo-server')
 const { initCosmos } = require('./cosmos/init')
 
@@ -17,8 +17,9 @@ const init = async () => {
   //   }
   // })
 
-  await server.start()
-  console.log('Server running on %s', server.info.uri)
+  app.listen(port, () => {
+    console.log(`Server running on https://localhost:${port}`)
+  })
   await initCosmos()
 }
 
