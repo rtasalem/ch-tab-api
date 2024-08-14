@@ -1,7 +1,7 @@
 const cosmosConfig = require('./cosmos')
-const mongoConfig = require('./mongo')
+// const mongoConfig = require('./mongo')
 
 module.exports = {
-  cosmosConfig,
-  mongoConfig
+  cosmosConfig
+  // mongoConfig
 }

@@ -3,3 +3,4 @@ GraphQL API for querying and mutating data stored in Azure Cosmos DB (for Mongo 
 ## Prerequisites
 - Docker
 - Docker Compose
+## Environment Variables

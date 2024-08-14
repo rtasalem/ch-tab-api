@@ -7,7 +7,8 @@ const ordersDatabase = async () => {
     id: cosmosConfig.ordersDatabase
   })
   await database.containers.createIfNotExists({
-    id: cosmosConfig.ordersContainer
+    id: cosmosConfig.ordersContainer,
+    partitionKey: { paths: ['/id'] }
   })
 
   return database
