@@ -2,30 +2,27 @@ const fs = require('fs')
 const path = require('path')
 
 const initCosmos = async () => {
-  process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0'
-  // try {
-  const databasesDir = path.join(__dirname, './databases')
-  const files = fs.readdirSync(databasesDir)
+  try {
+    process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0'
 
-  const createDatabases = files.map(async file => {
-    const databaseName = `${file.split('.')[0]}Database`
-    const db = require(`./databases/${file}`)
-    return db[databaseName]()
-  })
+    const databasesDir = path.join(__dirname, './databases')
+    const files = fs.readdirSync(databasesDir)
 
-  const result = await Promise.allSettled(createDatabases)
-  result.forEach(res => {
-    if (res.status === 'rejected') {
-      throw new Error(res.reason.message)
-    }
-  })
-  // } catch (error) {
-  //   throw new Error('Failed to create databases:', {
-  //     name: error.name,
-  //     message: error.message,
-  //     stack: error.stack
-  //   })
-  // }
+    const createDatabases = files.map(async file => {
+      const databaseName = `${file.split('.')[0]}Database`
+      const db = require(`./databases/${file}`)
+      return db[databaseName]()
+    })
+
+    const result = await Promise.allSettled(createDatabases)
+    result.forEach(res => {
+      if (res.status === 'rejected') {
+        throw new Error(res.reason.message)
+      }
+    })
+  } catch (error) {
+    throw new Error('Failed to initialise Azure Cosmos DB:', error.message)
+  }
 }
 
 module.exports = { initCosmos }

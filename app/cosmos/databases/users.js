@@ -1,20 +1,20 @@
 const cosmosClient = require('../client')
 const { cosmosConfig } = require('../../config')
 
-const ordersDatabase = async () => {
+const usersDatabase = async () => {
   try {
     const { database } = await cosmosClient.databases.createIfNotExists({
-      id: cosmosConfig.ordersDatabase
+      id: cosmosConfig.usersDatabase
     })
     await database.containers.createIfNotExists({
-      id: cosmosConfig.ordersContainer,
+      id: cosmosConfig.usersContainer,
       partitionKey: { paths: ['/id'] }
     })
 
     return database
   } catch (error) {
-    throw new Error('Failed to create orders database:', error.message)
+    throw new Error('Failed to create users database:', error.message)
   }
 }
 
-module.exports = { ordersDatabase }
+module.exports = { usersDatabase }

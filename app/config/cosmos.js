@@ -1,11 +1,12 @@
 const Joi = require('joi')
-const { DEVELOPMENT, TEST, PRODUCTION } = require('../constants/environments')
 
 const schema = Joi.object({
   endpoint: Joi.string(),
   key: Joi.string(),
-  ordersDatabase: Joi.string().default('ch-tab-orders-receiver'),
-  ordersContainer: Joi.string().default('ch-tab-orders')
+  ordersDatabase: Joi.string().default('ch-tab-orders'),
+  ordersContainer: Joi.string().default('orders'),
+  usersDatabase: Joi.string().default('ch-tab-users'),
+  usersContainer: Joi.string().default('users')
 })
 
 const config = {
@@ -14,10 +15,6 @@ const config = {
 }
 
 const { error, value } = schema.validate(config, { abortEarly: false })
-
-value.isDev = (process.env.NODE_ENV === DEVELOPMENT || process.env.NODE_ENV === TEST)
-value.isTest = process.env.NODE_ENV === TEST
-value.isProd = process.env.NODE_ENV === PRODUCTION
 
 if (error) {
   throw new Error(`Azure Cosmos DB config is invalid. ${error.message}`)

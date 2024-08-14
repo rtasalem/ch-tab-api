@@ -2,7 +2,6 @@
 const { server } = require('./server.js')
 // const { apolloServer } = require('./graphql/apollo-server')
 const { initCosmos } = require('./cosmos/init')
-// const { initMongo } = require('./mongo/client')
 
 const init = async () => {
   // await apolloServer.start()
@@ -20,7 +19,6 @@ const init = async () => {
 
   await server.start()
   console.log('Server running on %s', server.info.uri)
-  // await initMongo()
   await initCosmos()
 }
 

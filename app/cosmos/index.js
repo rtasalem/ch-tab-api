@@ -6,11 +6,7 @@ const cosmos = async () => {
     cosmos.ordersDatabase = await ordersDatabase()
     return cosmos
   } catch (error) {
-    throw new Error('Failed to create Cosmos DB Client:', {
-      name: error.name,
-      message: error.message,
-      stack: error.stack
-    })
+    throw new Error('Failed to create Azure Cosmos DB Client:', error.message)
   }
 }
 
