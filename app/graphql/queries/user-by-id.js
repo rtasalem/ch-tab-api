@@ -1,13 +1,13 @@
 const cosmos = require('../../cosmos')
 const { cosmosConfig } = require('../../config')
 
-const userByUserId = async (_root, args, context) => {
+const userById = async (_root, args, context) => {
   try {
     const { usersDatabase } = await cosmos()
 
     const querySpec = {
-      query: 'SELECT * FROM users u WHERE u.userId = @userId',
-      parameters: [{ name: '@userId', value: `${args.userId}` }]
+      query: 'SELECT * FROM users u WHERE u.id = @id',
+      parameters: [{ name: '@id', value: `${args.id}` }]
     }
 
     const response = await usersDatabase
@@ -15,16 +15,8 @@ const userByUserId = async (_root, args, context) => {
       .items.query(querySpec)
       .fetchAll()
 
-    if (!args.userId) {
-      throw new Error('userId must be provided')
-    }
-
-    if (!response.resources.length) {
-      throw new Error(`No user data found for userId ${args.userId}`)
-    }
-
     return {
-      userId: response.resources[0]?.id,
+      id: response.resources[0]?.id,
       createdAt: response.resources[0]?.createdAt,
       name: response.resources[0]?.name,
       email: response.resources[0]?.email,
@@ -37,4 +29,4 @@ const userByUserId = async (_root, args, context) => {
   }
 }
 
-module.exports = { userByUserId }
+module.exports = { userById }

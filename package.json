@@ -4,7 +4,7 @@
   "description": "GraphQL API for querying and mutating data stored in Azure Cosmos DB for the Take A Bao website.",
   "main": "index.js",
   "scripts": {
-    "start:watch": "nodemon --inspect=0.0.0.0 --ext js --legacy-watch app/index.js"
+    "start:watch": "nodemon app/index.js"
   },
   "repository": {
     "type": "git",
@@ -25,12 +25,10 @@
     "standard": "17.1.0"
   },
   "dependencies": {
-    "@apollo/server": "4.11.0",
     "@azure/cosmos": "4.1.0",
     "apollo-server-express": "3.13.0",
     "express": "4.19.2",
     "graphql-constraint-directive": "5.4.3",
-    "joi": "17.13.3",
-    "mongodb": "6.8.0"
+    "joi": "17.13.3"
   }
 }

@@ -1,6 +1,6 @@
 const {
   allUsers,
-  userByUserId,
+  userById,
   userByEmail
 } = require('../queries')
 
@@ -11,7 +11,7 @@ const {
 const resolvers = {
   Query: {
     allUsers,
-    userByUserId,
+    userById,
     userByEmail
   },
   Mutation: {

@@ -4,7 +4,8 @@ const { cosmosConfig } = require('../../config')
 const usersDatabase = async () => {
   try {
     const { database } = await cosmosClient.databases.createIfNotExists({
-      id: cosmosConfig.usersDatabase
+      id: cosmosConfig.usersDatabase,
+      throughput: 400
     })
     await database.containers.createIfNotExists({
       id: cosmosConfig.usersContainer,

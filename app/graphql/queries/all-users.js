@@ -16,7 +16,7 @@ const allUsers = async (_root, args, context) => {
 
     return {
       users: response.resources.map((x) => ({
-        userId: x.id,
+        id: x.id,
         createdAt: x.createdAt,
         name: x.name,
         email: x.email,

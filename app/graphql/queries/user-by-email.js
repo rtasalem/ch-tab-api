@@ -15,16 +15,8 @@ const userByEmail = async (_root, args, context) => {
       .items.query(querySpec)
       .fetchAll()
 
-    if (!args.email) {
-      throw new Error('Email must be provided')
-    }
-
-    if (!response.resources.length) {
-      throw new Error(`No user data found for userId ${args.email}`)
-    }
-
     return {
-      userId: response.resources[0]?.id,
+      id: response.resources[0]?.id,
       createdAt: response.resources[0]?.createdAt,
       name: response.resources[0]?.name,
       email: response.resources[0]?.email,
