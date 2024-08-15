@@ -1,25 +1,16 @@
-// const hapiApollo = require('@as-integrations/hapi').default
 const { app, port } = require('./server')
-// const { apolloServer } = require('./graphql/apollo-server')
+const { apolloServer } = require('./graphql')
 const { initCosmos } = require('./cosmos/init')
 
 const init = async () => {
-  // await apolloServer.start()
-
-  // await server.register({
-  //   plugin: hapiApollo,
-  //   options: {
-  //     apolloServer,
-  //     path: '/graphql',
-  //     context: ({ request }) => {
-  //       return { headers: request.headers }
-  //     }
-  //   }
-  // })
+  await apolloServer.start().then(() => {
+    apolloServer.applyMiddleware({ app, path: '/graphql' })
+  })
 
   app.listen(port, () => {
     console.log(`Server running on https://localhost:${port}`)
   })
+
   await initCosmos()
 }
 

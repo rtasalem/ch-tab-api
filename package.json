@@ -4,13 +4,7 @@
   "description": "GraphQL API for querying and mutating data stored in Azure Cosmos DB for the Take A Bao website.",
   "main": "index.js",
   "scripts": {
-    "pretest": "npm run test:lint",
-    "test": "jest --runInBand --forceExit",
-    "test:watch": "jest --coverage=false --onlyChanged --watch --runInBand",
-    "test:lint": "standard",
-    "test:debug": "node --inspect-brk=0.0.0.0 ./node_modules/jest/bin/jest.js --coverage=false --onlyChanged --watch --runInBand --no-cache",
-    "start:watch": "nodemon --inspect=0.0.0.0 --ext js --legacy-watch app/index.js",
-    "start:debug": "nodemon --inspect-brk=0.0.0.0 --ext js --legacy-watch app/index.js"
+    "start:watch": "nodemon --inspect=0.0.0.0 --ext js --legacy-watch app/index.js"
   },
   "repository": {
     "type": "git",
@@ -18,8 +12,7 @@
   },
   "keywords": [
     "graphql",
-    "cosmosdb",
-    "mongodb"
+    "cosmosdb"
   ],
   "author": "Rana Salem (https://github.com/rtasalem)",
   "license": "ISC",
@@ -32,10 +25,11 @@
     "standard": "17.1.0"
   },
   "dependencies": {
-    "@as-integrations/hapi": "2.0.1",
+    "@apollo/server": "4.11.0",
     "@azure/cosmos": "4.1.0",
-    "@hapi/hapi": "21.3.10",
+    "apollo-server-express": "3.13.0",
     "express": "4.19.2",
+    "graphql-constraint-directive": "5.4.3",
     "joi": "17.13.3",
     "mongodb": "6.8.0"
   }

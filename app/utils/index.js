@@ -1,4 +1,4 @@
-const { generateTimestamp } = require('./generate-timestmap')
+const { generateTimestamp } = require('./generate-timestamp')
 
 module.exports = {
   generateTimestamp
