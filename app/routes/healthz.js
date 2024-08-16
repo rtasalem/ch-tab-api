@@ -1,7 +1,8 @@
-module.exports = {
-  method: 'GET',
-  path: '/healthz',
-  handler: (request, h) => {
-    return h.response('ok').code(200)
-  }
-}
+const express = require('express')
+const healthzRouter = express.Router()
+
+healthzRouter.get('/healthz', (req, res) => {
+  res.status(200).send('ok')
+})
+
+module.exports = healthzRouter

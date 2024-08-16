@@ -1,14 +1,14 @@
-const Hapi = require('@hapi/hapi')
+const express = require('express')
+const healthyRouter = require('./routes/healthy')
+const healthzRouter = require('./routes/healthz')
 
-const server = Hapi.server({
-  port: '3001'
-})
+const app = express()
+const port = 3001
 
-const routes = [].concat(
-  require('./routes/healthy'),
-  require('./routes/healthz')
-)
+app.use(healthyRouter)
+app.use(healthzRouter)
 
-server.route(routes)
-
-module.exports = { server }
+module.exports = {
+  app,
+  port
+}
