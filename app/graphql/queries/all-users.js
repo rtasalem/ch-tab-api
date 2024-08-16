@@ -6,7 +6,7 @@ const allUsers = async (_root, args, context) => {
     const { usersDatabase } = await cosmos()
 
     const querySpec = {
-      query: 'SELECT * FROM users s'
+      query: 'SELECT * FROM users'
     }
 
     const response = await usersDatabase

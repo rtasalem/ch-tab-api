@@ -12,6 +12,7 @@ type Mutation {
   createUser(name: String!, email: String!, password: String!, address: String!, phone: String!): UserResponse
   updateUserById(id: ID!, name: String, email: String, password: String, address: String, phone: String): UserResponse
   deleteUserByEmail(email: String!): Status
+  deleteUserById(id: String!): Status
 }
 
 type Status {
