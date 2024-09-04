@@ -1,6 +1,6 @@
 const { gql } = require('apollo-server-express')
 const { constraintDirectiveTypeDefs } = require('graphql-constraint-directive')
-const { nameConstraints, emailConstraints, passwordConstraints, phoneConstraints } = require('./constraints')
+const { nameConstraints } = require('./constraints')
 
 const typeDefs = gql`
 ${constraintDirectiveTypeDefs}
@@ -14,19 +14,19 @@ type Query {
 type Mutation {
   createUser(
     name: String! ${nameConstraints}
-    email: String! ${emailConstraints}
-    password: String! ${passwordConstraints}
-    address: String! 
-    phone: String! ${phoneConstraints}
+    email: String!
+    password: String!
+    address: String!
+    phone: String! 
   ): UserResponse
 
   updateUserById(
     id: ID!
-    name: String ${nameConstraints}
-    email: String ${emailConstraints}
-    password: String ${passwordConstraints}
+    name: String
+    email: String
+    password: String
     address: String 
-    phone: String ${phoneConstraints}
+    phone: String
   ): UserResponse
 
   deleteUserByEmail(
