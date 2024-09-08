@@ -30,6 +30,7 @@
     "apollo-server-express": "3.13.0",
     "express": "4.19.2",
     "graphql-constraint-directive": "5.4.3",
+    "jest": "29.7.0",
     "joi": "17.13.3"
   }
 }
