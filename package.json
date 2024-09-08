@@ -4,7 +4,12 @@
   "description": "GraphQL API for querying and mutating data stored in Azure Cosmos DB for the Take A Bao website.",
   "main": "index.js",
   "scripts": {
-    "start:watch": "nodemon app/index.js"
+    "test": "jest --runInBand --forceExit",
+    "test:watch": "jest --coverage=false --onlyChanged --watch --runInBand",
+    "test:lint": "standard",
+    "test:debug": "node --inspect-brk=0.0.0.0 ./node_modules/jest/bin/jest.js --coverage=false --onlyChanged --watch --runInBand --no-cache",
+    "start:watch": "nodemon --inspect=0.0.0.0 --ext js --legacy-watch app/index.js",
+    "start:debug": "nodemon --inspect-brk=0.0.0.0 --ext js --legacy-watch app/index.js"
   },
   "repository": {
     "type": "git",
