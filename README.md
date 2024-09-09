@@ -1,5 +1,5 @@
 # ch-tab-api
-GraphQL API for querying and mutating data stored in Azure Cosmos DB for the Take A Bao website.
+GraphQL API for querying and mutating data stored in Azure Cosmos DB for the Take A Bao website. Inspired by Defra's [ffc-sfd-data](https://github.com/defra/ffc-sfd-data) microservice for the Single Front Door.
 ## Prerequisites
 - Docker
 - Docker Compose

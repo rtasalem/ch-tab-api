@@ -7,7 +7,8 @@ const {
 const {
   createUser,
   deleteUserById,
-  deleteUserByEmail
+  deleteUserByEmail,
+  updateUserById
 } = require('../mutations')
 
 const resolvers = {
@@ -19,7 +20,8 @@ const resolvers = {
   Mutation: {
     createUser,
     deleteUserById,
-    deleteUserByEmail
+    deleteUserByEmail,
+    updateUserById
   }
 }
 
