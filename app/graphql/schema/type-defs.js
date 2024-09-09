@@ -27,7 +27,7 @@ type Mutation {
     password: String
     address: String 
     phone: String
-  ): UserResponse
+  ): UpdatedUserResponse
 
   deleteUserByEmail(
     email: String!
@@ -54,9 +54,23 @@ type User {
   phone: String!
 }
 
+type UpdatedUser {
+  id: ID
+  createdAt: String
+  name: String
+  email: String
+  password: String
+  address: String
+  phone: String
+}
+
 type UserResponse {
   status: Status
   user: User
+}
+type UpdatedUserResponse {
+  status: Status
+  user: UpdatedUser
 }
 
 type AllUsers {
