@@ -14,8 +14,8 @@ type Query {
 type Mutation {
   createUser(
     name: String! ${nameConstraints}
-    email: String!
-    password: String!
+    email: String! 
+    password: String! 
     address: String!
     phone: String! 
   ): UserResponse

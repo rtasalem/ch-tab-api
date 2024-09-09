@@ -1,9 +1,20 @@
 const cosmos = require('../../cosmos')
 const { cosmosConfig } = require('../../config')
+const { EMAIL_REGEX, PASSWORD_REGEX, UK_PHONE_REGEX } = require('../../constants/reg-ex')
 const { generateTimestamp } = require('../../utils')
 
 const createUser = async (_root, args, context) => {
   const { usersDatabase } = await cosmos()
+
+  const validate = (value, regex, error) => {
+    if (!regex.test(value)) {
+      throw new Error(error)
+    }
+  }
+
+  validate(args.email, EMAIL_REGEX, 'Invalid email format')
+  validate(args.password, PASSWORD_REGEX, 'Invalid password format')
+  validate(args.phone, UK_PHONE_REGEX, 'Invalid UK phone number format')
 
   const item = {
     createdAt: generateTimestamp(),
