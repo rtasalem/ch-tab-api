@@ -22,7 +22,7 @@ type Mutation {
 
   updateUserById(
     id: ID!
-    name: String
+    name: String ${nameConstraints}
     email: String
     password: String
     address: String 
